@@ -53,19 +53,21 @@ class IoTDeviceSim
             messageString_json = this.teleData.serialize();
             Message message = new Message(messageString_json);
 
-            //testing a message property
-            message.setProperty("temperatureSet",
-              Double.toString(this.teleData.getDataValue()));
+            //testing a message propertycd
+            /*message.setProperty("temperatureSet",
+              Double.toString(this.teleData.getDataValue()));*/
 
             // Send the message.
             client.sendEventAsync(message, callback, lock);
-            System.out.println("Sending Message: "+messageString_json);
+            System.out.println("Sending Message #"+(i+1)+": "+messageString_json);
 
             synchronized (lock) {
                 lock.wait();
             }
 
-            Thread.sleep(delayMS);
+            if((i+1) < iterateNTimes) {
+              Thread.sleep(delayMS);
+            }
         }
 
         client.closeNow();
