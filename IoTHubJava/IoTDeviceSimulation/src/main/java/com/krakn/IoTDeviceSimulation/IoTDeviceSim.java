@@ -15,7 +15,7 @@ class IoTDeviceSim
     private DeviceClient client;
     public TelemetryDataPoint teleData;
 
-    //"HostName=<hostname>;DeviceId=<deviceid>;SharedAccessKey=<sharedaccesskey>
+    //"HostName=<hostname>;DeviceId=<deviceid>;SharedAccessKey=<sharedaccesskey>"
     public IoTDeviceSim(String connectionString) throws URISyntaxException {
         this.connectionString = connectionString;
         this.hostname = connectionString.split(";")[0].split("=")[1];
