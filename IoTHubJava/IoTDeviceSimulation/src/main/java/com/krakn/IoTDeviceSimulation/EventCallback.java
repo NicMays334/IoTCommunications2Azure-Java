@@ -1,4 +1,4 @@
-package com.krakn.iotdevicesimulation;
+package com.krakn.IoTDeviceSimulation;
 
 import com.microsoft.azure.sdk.iot.device.IotHubEventCallback;
 import com.microsoft.azure.sdk.iot.device.IotHubStatusCode;

@@ -1,4 +1,4 @@
-package com.krakn.iotdevicesimulation;
+package com.krakn.IoTDeviceSimulation;
 
 import com.google.gson.Gson;
 
@@ -27,7 +27,7 @@ public class TelemetryDataPoint {
     }
 
     public double getDataValue() {
-        return this.value;
+        return (Math.round(this.value * 100.0) / 100.0);
     }
 
     public String serialize() {

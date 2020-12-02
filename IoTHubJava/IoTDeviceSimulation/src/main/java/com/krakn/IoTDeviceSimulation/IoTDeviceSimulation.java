@@ -1,4 +1,4 @@
-package com.krakn.iotdevicesimulation;
+package com.krakn.IoTDeviceSimulation;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -14,8 +14,8 @@ public class IoTDeviceSimulation{
         boolean delta = true;
 
         IoTDeviceSim device = new IoTDeviceSim(connString);
-        device.teleData.setDataName("temperature");
-        device.teleData.setDataValue(30.0);
+        //device.teleData.setDataName("temperature");
+        //device.teleData.setDataValue(30.0);
         System.out.println("\nCommunicating from device: "+device.toString());
         device.sendIoTTelemetryData(delta, iterateNTimes, delayMS);
         System.out.println("Done");

@@ -2,11 +2,11 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.krakn.iotdevicesimulation</groupId>
+    <groupId>com.krakn.IoTDeviceSimulation</groupId>
     <artifactId>iothubjava</artifactId>
     <version>1.0</version>
   </parent>
-  <groupId>com.krakn.iotdevicesimulation</groupId>
+  <groupId>com.krakn.IoTDeviceSimulation</groupId>
   <artifactId>iotdevicesimulation</artifactId>
   <version>1.0.0</version>
   <name>IoT Device Simulation</name>
@@ -35,7 +35,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>com.krakn.iotdevicesimulation.IoTDeviceSimulation</mainClass>
+              <mainClass>com.krakn.IoTDeviceSimulation.IoTDeviceSimulation</mainClass>
             </manifest>
           </archive>
         </configuration>
