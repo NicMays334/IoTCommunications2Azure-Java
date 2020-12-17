@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.krakn.IoTDeviceSimulation</groupId>
+  <groupId>com.krakn.iothubjava</groupId>
   <artifactId>iothubjava</artifactId>
   <name>Communicating to IoTHub with Java</name>
   <version>1.0</version>
   <packaging>pom</packaging>
   <modules>
     <module>IoTDeviceSimulation</module>
+    <module>JMeterIoTDevice</module>
   </modules>
     <build>
     <plugins>
@@ -40,7 +41,7 @@
                 </filter>
               </filters>
               <shadedArtifactAttached>true</shadedArtifactAttached>
-              <shadedClassifierName>with-deps</shadedClassifierName>
+              <shadedClassifierName>d</shadedClassifierName>
             </configuration>
           </execution>
         </executions>

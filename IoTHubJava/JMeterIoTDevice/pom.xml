@@ -6,10 +6,10 @@
     <artifactId>iothubjava</artifactId>
     <version>1.0</version>
   </parent>
-  <groupId>com.krakn.IoTDeviceSimulation</groupId>
-  <artifactId>iotdevicesimulation</artifactId>
-  <version>1.0.0</version>
-  <name>IoT Device Simulation</name>
+  <groupId>com.krakn.iothubjava</groupId>
+  <artifactId>jmeteriotdevice</artifactId>
+  <version>2.3</version>
+  <name>JMeter IoT Device</name>
   <dependencies>
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
@@ -35,7 +35,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>com.krakn.IoTDeviceSimulation.IoTDeviceSimulation</mainClass>
+              <mainClass>com.krakn.iothubjava.JMeterIoTDevice</mainClass>
             </manifest>
           </archive>
         </configuration>

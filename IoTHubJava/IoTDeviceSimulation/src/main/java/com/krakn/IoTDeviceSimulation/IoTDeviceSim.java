@@ -51,8 +51,8 @@ class IoTDeviceSim
 
             //generate a message from JSON string
             messageString_json = this.teleData.serialize();
+            
             Message message = new Message(messageString_json);
-
             message.setProperty("temperature", Double.toString(teleData.getDataValue()));
           
             // Send the message.
