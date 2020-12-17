@@ -13,3 +13,5 @@ buildNumber.properties
 #other
 .project
 .settings
+.vscode/
+.classpath
