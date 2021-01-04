@@ -16,6 +16,7 @@
 
 - Source Code Modification
 
+- Real Time Data Visualization
   
 
 ---
@@ -39,17 +40,38 @@
   ```powershell
   az extension add --name azure-iot
   ```
+- Create a Resource Group (change the location to your closest Azure location)
+
+  ```powershell
+  az group create `
+  --name <resourceGroupName> `
+  --location eastus
+  ```
+
+- Create a IoT Hub (name must be globally unique)
+
+  ```powershell
+  az iot hub create `
+  --name <yourIoTHubName> `
+  --resource-group <resourceGroupName> `
+  --sku S1
+  ```
 
 - Register an IoT device to your hub choose and remember a device name:
 
   ```powershell
-  az iot hub device-identity create --hub-name <yourIoTHubName> --device-id <deviceName>
+  az iot hub device-identity create `
+  --hub-name <yourIoTHubName> `
+  --device-id <deviceName>
   ```
 
 - Reveal the connection string for your newly registered device using your previously selected device name:
 
   ```powershell
-  az iot hub device-identity show-connection-string --hub-name <yourIoTHubName> --device-id <deviceName> --output table
+  az iot hub device-identity show-connection-string `
+  --hub-name <yourIoTHubName> `
+  --device-id <deviceName> `
+  --output table
   ```
 
 - The above command should reveal the device string in the form of:
@@ -137,6 +159,94 @@ java -jar .\target\iotdevicesimulation-1.0.0-with-deps.jar <"ConnectionString"> 
 
 
 
-### Quick Ways to Modify the Source Code\
+### Quick Ways to Modify the Source Code
 
 @TODO
+
+---
+
+
+
+### Real Time Streaming Visualization
+
+#### Prerequisites:
+- Azure Account
+
+- Power BI Subscription
+
+#### Setup:
+
+- Create a Stream Analytics Job using the [Azure Portal](https://ms.portal.azure.com/)
+
+- Create a new resource using the "+ Create a Resource" button
+
+- Type into the search bar "Stream Analytics Job" & create the resource
+
+![Stream Analytics Job](./images/streamanalytics.png)
+
+- As you create the resource pick the resource group you created earlier from the drop down menu, leave the other options default
+
+- After the resource deploys, go to the resource & click the "Inputs" button (under Job topology)
+
+- Add an IoT Hub Stream Input from the dropdown at the top
+
+![IoT Hub Input](./images/iothubinput.png)
+
+- Select the IoT Hub you created earlier, leave other options default and click "save"
+
+- Create a Stream Output by clicking the "Outputs" button
+
+- Add a Power BI output & Authorize
+
+- Under "Authentication mode" make sure that User token is selected
+
+![Power BI Output](./images/powerbioutput.png)
+
+- Select "My workspace" under Group workspace 
+
+- Click "Save" at the bottom of the blade
+
+- Now to create the job itself, click the "Query" button (under Job topology)
+
+- Insert the following query
+  ```sql
+  SELECT 
+    deviceId AS Device, 
+    value AS Temperature, 
+    EventProcessedUtcTime AS Time
+  INTO [<yourOutputAlias>]
+  FROM [<yourInputAlias>]
+  ```
+
+>**_Note_**: <br> If your device is generating data you should be able to preview the data. There is also an option to preview from a selected time range.
+
+
+- Start Device & Streaming Job
+
+- Open [Power BI Service](https://msit.powerbi.com/)
+
+- Click on "My workspace"
+
+- Create a New Dashboard
+
+![New Dashboard](./images/newdashboard.png)
+
+- Click the "Edit" button on the task bar
+
+![Edit Button](./images/edit.png)
+
+- Add a Tile & click "Custom Streaming Data"
+
+- A blade should appear with datasets, select the dataset you created as your stream analytics output
+
+>**_Note_**: <br> It takes a bit for data to stream to your dataset, so wait a moment if the dataset is not appearing.
+
+- Change the visualization type to "Line chart"
+
+![Line Chart](./images/linechart.png)
+
+- Select the necessary fields to display
+
+- Congratulations you are now able to view your device data in real-time
+
+![Dashboard](./images/dashboard.png)
